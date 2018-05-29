@@ -1,0 +1,47 @@
+@keyframes logo
+{
+    0%
+    {
+        transform: translate(5em) rotate(45deg);
+    }
+    20%
+    {
+        transform: translate(10em) rotate(90deg);
+    }
+    40%
+    {
+        transform: translate(15em) rotate(135deg);
+    }
+    60%
+    {
+        transform: translate(15em) rotate(180deg);
+    }
+    80%
+    {
+        transform: translate(10em) rotate(225deg);
+    }
+    100%
+    {
+        transform: translate(5em) rotate(270deg);
+    }
+}
+
+form {
+    background-color: purple;
+    width: 240px;
+}
+
+img {
+    width: 150px;
+    height: 100px;
+}
+
+#logo
+{
+    width: 150px;
+    height: 100px;
+    background-color: transparent;
+    animation-name: logo;
+    animation-duration: 2s;
+    animation-iteration-count: 2;
+}

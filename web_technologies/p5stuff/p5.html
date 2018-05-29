@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="p5.css">
+    <script src="p5.js"></script>
+</head>
+<body>
+    Dimensions of Square Canvas <input type="number" value="500" step="100" min="300" max="900" width = 3em id="canvas_size" required />
+    <br/>
+    <br/>
+    Number of Darts to Throw <input type="number" value="500" step="100" min="300" max="900" width = 3em id="darts" required />
+    <br/>
+    <br/>
+    <input id="fire" type="button" value="Fire!" onclick="Fire();" />
+    <audio id="gunshot" src="gunshot.wav" autostart="false" ></audio>
+    <br/>
+    <br/>
+    <canvas id="canvas" display="NONE"></canvas>
+    <div id="pi_approx">
+    </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        //Connect to desired node server.
+        var socket = io('localhost:5917');
+
+        //When a valid key is pressed, send it to the node server.
+        document.onkeydown = function(event)
+        {
+            var keyCode = event.which;
+            //w
+            if (keyCode == 87)
+                socket.emit('keyPress', {inputId: 'W', state:true});
+            //a
+            else if (keyCode == 65)
+                socket.emit('keyPress', {inputId: 'A', state:true});
+            //s
+            else if (keyCode == 83)
+                socket.emit('keyPress', {inputId: 'S', state:true});
+            //d
+            else if (keyCode == 68)
+                socket.emit('keyPress', {inputId: 'D', state:true});
+            //e
+            else if (keyCode == 69)
+                socket.emit('keyPress', {inputId: 'E', state:true});
+            //c
+            else if (keyCode == 67)
+                socket.emit('keyPress', {inputId: 'C', state:true});
+            //x
+            else if (keyCode == 88)
+                socket.emit('keyPress', {inputId: 'X', state:true});
+            //y
+            else if (keyCode == 89)
+                socket.emit('keyPress', {inputId: 'Y', state:true});
+            //z
+            else if (keyCode == 90)
+                socket.emit('keyPress', {inputId: 'Z', state:true});
+        }
+
+        //When desired key is released, send that info to the server.
+        document.onkeyup = function(event)
+        {
+            var keyCode = event.which;
+            //w
+            if (keyCode == 87)
+                socket.emit('keyPress', {inputId: 'W', state:false});
+            //a
+            else if (keyCode == 65)
+                socket.emit('keyPress', {inputId: 'A', state:false});
+            //s
+            else if (keyCode == 83)
+                socket.emit('keyPress', {inputId: 'S', state:false});
+            //d
+            else if (keyCode == 68)
+                socket.emit('keyPress', {inputId: 'D', state:false});
+            //e
+            else if (keyCode == 69)
+                socket.emit('keyPress', {inputId: 'E', state:false});
+            //c
+            else if (keyCode == 67)
+                socket.emit('keyPress', {inputId: 'C', state:false});
+            //x
+            else if (keyCode == 88)
+                socket.emit('keyPress', {inputId: 'X', state:false});
+            //y
+            else if (keyCode == 89)
+                socket.emit('keyPress', {inputId: 'Y', state:false});
+            //z
+            else if (keyCode == 90)
+                socket.emit('keyPress', {inputId: 'Z', state:false});
+        }
+
+        //Make a 3D canvas.
+        var context = new THREE.WebGLRenderer({canvas: document.getElementById('canvas'), antialias: true});
+
+        //When 'updatePositions' message is received from the node server,
+        //update cube positions accordingly.
+        socket.on('updatePositions',
+            //This function will update the positions of each cube by
+            //re-drawing the canvas with both cubes and their new coordinates.
+            function(data)
+            {
+                //Make canvas black.
+                context.setClearColor(000000);
+
+                //Make canvas fit window.
+                context.setSize(window.innerWidth, window.innerHeight);
+
+                //Setup camera.
+                var camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000);
+
+                //Make a new scene.
+                var scene  = new THREE.Scene();
+
+                //Generate cubes.
+                for(var i = 0; i < data.length; i++)
+                {
+                    var geometry = new THREE.BoxGeometry(100, 100, 100);
+                    var material;
+                    //Determine material type (color or texture).
+                    if(i%2 == 0)
+                    {
+                        var light  = new THREE.AmbientLight(0xffffff, 0.5);
+                        scene.add(light);
+
+                        var light1 = new THREE.PointLight(0xaa00bb, 0.5);
+                        scene.add(light1);
+
+                	    material = new THREE.MeshLambertMaterial({color: 0x8800ff});
+                    }
+                    else
+                    {
+            	        material = new THREE.MeshLambertMaterial({map: THREE.ImageUtils.loadTexture('/textures/billy.jpeg')});
+                        material.minFilter = THREE.NearestFilter;
+                    }
+
+                    //Apply appropriate texture to cube.
+                    var mesh     = new THREE.Mesh(geometry, material);
+
+                    //Set positions and rotations to updated positions.
+                    mesh.position.set(data[i].x, data[i].y, data[i].z);
+                    mesh.rotation.set(data[i].x_rot, data[i].y_rot, data[i].z_rot);
+                    scene.add(mesh);
+
+                    //Render cubes.
+                    context.render(scene, camera);
+                }
+            }
+        );
+    </script>
+</body>
+</html>

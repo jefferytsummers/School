@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="p3.css">
+    <script src="p3.js"></script>
+</head>
+<body>
+    <div id='logo'>
+        <img src="logo.png"></img>
+    </div>
+    <h1>
+        P3 - Message Board
+    </h1>
+    <section id="formbox">
+    <form action="/cgi-bin/p3.py" method="GET">
+        <input value = "1" type = "hidden" name = "flag" />
+        <font color="white">
+            Name:
+        </font>
+        <input type = "text" value = "" name = "name" id = "name" required/>
+        <br/>
+        <br/>
+        <font color="white">
+            Message:
+        </font>
+        <input type = "text" name = "message" required/>
+        <br/>
+        <br/>
+        <input type = "submit" value="Post Message" id="post" />
+        <br/>
+        <br/>
+    </form>
+    <form action="/cgi-bin/p3.py" method="GET">
+        <input value = "0" type = "hidden" name = "flag" />
+        <input type = "submit" value="Clear Session Storage (saved name)" id="clear" />
+    </form>
+    </section>
+    <h1>
+        Posted Msgs
+    </h1>
+    <div id="messages">
+    </div>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        /*Design container.*/
+        #container {
+            display: grid;
+            border: 4px black solid;
+            text-align: center;
+            font-size: 17px;
+            grid-template-areas: "menu hierarchy build inspector"
+                                 "menu hierarchy assets inspector";
+            grid-template-rows: 655px 285px;
+            grid-template-columns: 5% 15% 65% 15%;
+        }
+
+        /*Format ID's.*/
+        #build {
+            border-bottom: 1px black solid;
+            border-left: 1px black solid;
+            border-right: 1px black solid;
+            background-color: #AED8E6;
+            grid-area: build;
+        }
+
+        #assets {
+            border-top: 1px black solid;
+            border-left: 1px black solid;
+            border-right: 1px black solid;
+            background-color: #8DF390;
+            grid-area: assets;
+        }
+
+        #hierarchy {
+            border-left: 1px black solid;
+            border-right: 1px black solid;
+            background-color: #F8EBDA;
+            grid-area: hierarchy;
+        }
+
+        #inspector {
+            border-left: 1px black solid;
+            grid-area: inspector;
+            background-color: #FDFF42;
+        }
+
+        #menu {
+            border-right: 1px black solid;
+            grid-area: menu;
+            background-color: #FD001E;
+        }
+
+        .styled_text {
+            Display: inline;
+        }
+        /*This class is specifically for rotating the text in a given section*/
+        .vertical_text{
+            transform: rotate(90deg);
+            line-height: 6;
+            Display: normal;
+        }
+
+        /*Configure button options.*/
+        .button {
+            background: transparent;
+            box-shadow: none;
+            border: 1px;
+        }
+
+        .menu_button {
+            position: relative;
+            background-color:#000000;
+        }
+
+        #mb1 {
+            z-index: 1;
+            position: relative;
+        }
+
+        #mb2 {
+            top: -5px;
+            z-index: 2;
+            position: relative;
+        }
+
+        #mb3 {
+            top: -10px;
+            z-index: 3;
+            position: relative;
+        }
+
+        #mb4 {
+            top: -15px;
+            z-index: 4;
+            position: relative;
+        }
+
+        .menu_content{
+            display: none;
+            top: 12px;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 277px;
+            min-height: 250px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
+
+        .menu_content a {
+            color: black;
+            padding: 20px 16px;
+            text-align: left;
+            text-decoration: none;
+            display: block;
+            font-size: 20px;
+        }
+
+        .menu_content a:hover{
+            background-color: #dddddd;
+        }
+
+        .show_menu {
+            display: block;
+        }
+
+
+
+    </style>
+
+    <script>
+        //Change size of desired area.
+        function ChangeSize(clicked_id)
+        {
+            //Create a few convenient booleans.
+            if(typeof ChangeSize.hb == "undefined")
+                ChangeSize.hb = false;
+            if(typeof ChangeSize.ib == "undefined")
+                ChangeSize.ib = false;
+            if(typeof ChangeSize.ab == "undefined")
+                ChangeSize.ab = false;
+
+            //Keep track of column sizes.
+            if(clicked_id != "ab")
+            {
+                if(typeof ChangeSize.cols == "undefined")
+                    ChangeSize.cols = "5% 15% 65% 15%";
+                else
+                    ChangeSize.cols =
+                        document.getElementById("container").style.gridTemplateColumns;
+                var cols = ChangeSize.cols.split(" ");
+            }
+
+            //Manipulate grid area sizes based on button clicked.
+            if(clicked_id == "hb")
+            {
+                if(!ChangeSize.hb)
+                {
+                    document.getElementById("container").style.gridTemplateColumns
+                        = cols[0] + " " + (parseInt(cols[1]) - 10).toString()
+                                  + "% " + (parseInt(cols[2]) + 10).toString()
+                                  + "% " + cols[3];
+                    ChangeSize.hb = true;;
+                }
+
+                else
+                {
+                    document.getElementById("container").style.gridTemplateColumns
+                        = cols[0] + " " + (parseInt(cols[1]) + 10).toString()
+                                  + "% " + (parseInt(cols[2]) - 10).toString()
+                                  + "% " + cols[3];
+                    ChangeSize.hb = false;
+                }
+
+                var h = document.getElementById("h");
+                h.classList.toggle("vertical_text");
+                h.classList.toggle("styled_text");
+            }
+
+            else if(clicked_id == "ib")
+            {
+                if(!ChangeSize.ib)
+                {
+                    document.getElementById("container").style.gridTemplateColumns
+                        = cols[0] + " " + cols[1] + " " + (parseInt(cols[2])
+                                + 10).toString() + "% " + (parseInt(cols[3])
+                                - 10).toString() + "%";
+                    ChangeSize.ib = true;
+                }
+
+                else
+                {
+                    document.getElementById("container").style.gridTemplateColumns
+                        = cols[0] + " " + cols[1] + " " + (parseInt(cols[2])
+                                - 10).toString() + "% " + (parseInt(cols[3])
+                                + 10).toString() + "%";
+                    ChangeSize.ib = false;
+                }
+
+                var i = document.getElementById("i");
+                i.classList.toggle("vertical_text");
+                i.classList.toggle("styled_text");
+            }
+
+            else
+            {
+                if(!ChangeSize.ab)
+                {
+                    document.getElementById("container").style.gridTemplateRows
+                        = "845.95px 94.05px";
+                    ChangeSize.ab = true;
+                }
+
+                else
+                {
+                    document.getElementById("container").style.gridTemplateRows
+                        = "655px 285px";
+                    ChangeSize.ab = false;
+                }
+            }
+        }
+
+        function DisplayMenu()
+        {
+            document.getElementById("click_menu").classList.toggle("show_menu");
+        }
+
+        window.onclick = function(event)
+        {
+            var menu = document.getElementById("click_menu");
+            if(!event.target.matches("#mb1") && menu.classList.contains("show_menu"))
+                menu.classList.remove("show_menu");
+        }
+    </script>
+
+</head>
+<body>
+
+    <div id="container">
+
+        <section id="build">
+            BUILD
+        </section>
+
+        <section id="assets">
+            <input type="image" class="button" id = "ab" onclick="ChangeSize(this.id)" src="collapse_btn.png" height="20"></input>
+            ASSETS
+        </section>
+
+        <section id="hierarchy">
+            <input type="image" class="button" id = "hb" onclick="ChangeSize(this.id)" src="collapse_btn.png" height="20"></input>
+            <div class="styled_text" id = "h">
+                HIERARCHY
+            </div>
+        </section>
+
+        <section id="inspector">
+            <input class="button" type="image" id = "ib" onclick="ChangeSize(this.id)" src="collapse_btn.png" height="20"></input>
+            <div class="styled_text" id="i">
+                INSPECTOR
+            </div>
+        </section>
+
+        <section id="menu">
+            <input class="menu_button" id = "mb1" onclick="DisplayMenu()" type="image" src="menu_button.png" height=93.5px width=93.5></input>
+            <div id="click_menu" class="menu_content">
+                <p>
+                <a ref='#'>Home</a>
+                </p>
+                <p>
+                <a ref='#'>About</a>
+                </p>
+                <p>
+                <a ref='#'>Content</a>
+                </p>
+            </div>
+            <input class="menu_button" id = "mb2" type="image" src="button_2.png" height=93.5px width=93.5></input>
+            <input class="menu_button" id = "mb3" type="image" src="button_3.png" height=93.5px width=93.5></input>
+            <input class="menu_button" id = "mb4" type="image" src="button_4.png" height=93.5px width=93.5></input>
+        </section>
+    </div>
+
+</body>
+</html>

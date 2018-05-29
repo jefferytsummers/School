@@ -1,0 +1,83 @@
+#container{
+    border: black solid 1px;
+    padding:40px;
+    color: orange;
+    background: black;
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.shape{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    color: grey;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#graveyard{
+    border: green solid 5px;
+    background-color: green;
+    background-image: url("lil_tombstone.png");
+    background-repeat: repeat-x;
+    height: 40px;
+    background-size: 30px;
+}
+
+#center_this{
+    text-align: center;
+}
+
+.boxes{
+    border: purple solid 5px;
+    color: black;
+    background-color: maroon;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.flip{
+    transform: scaleX(-1);
+}
+
+h1{
+    text-decoration: underline;
+    text-decoration-color: purple;
+}
+
+h2{
+    text-decoration: underline;
+    text-decoration-color: purple;
+}
+
+#file_to_upload{
+    display: none;
+}
+
+summary{
+    background-color: lime;
+}
+
+section a{
+    color: black;
+    text-decoration: none;
+}
+
+#drop_zone {
+    border: maroon dashed 4px;
+    width: 310px;
+    text-align: center;
+    background-image: url("cauldron.png");
+    background-repeat: none;
+    height: 320px;
+}

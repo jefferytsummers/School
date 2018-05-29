@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #title-content {
+            background-color: green;
+            font-weight: bold;
+        }
+        #header-content {
+            background-color: orange;
+        }
+
+        #main-content {
+            background-color: antiquewhite;
+        }
+
+        #aside-content {
+            background-color: red;
+        }
+
+        #footer-content {
+            background-color: yellow;
+        }
+
+        #container {
+            display: grid;
+            border: 5px purple solid;
+            font-size: 31px;
+        }
+
+        @media screen and (max-width: 750px) {
+            #container {
+                grid-template-areas: "title"
+                                     "header"
+                                     "main"
+                                     "aside"
+                                     "footer";
+                grid-template-rows: 38px 104px 103px 104px 103px
+            }
+
+            #title-content {
+                border-bottom: 2px white solid;
+            }
+            #header-content {
+                border-top:  2px white solid;
+                border-bottom: 2px white solid;
+            }
+            #main-content {
+                border-top:  2px white solid;
+                border-bottom: 2px white solid;
+            }
+            #aside-content {
+                border-top:  2px white solid;
+                border-bottom: 2px white solid;
+            }
+            #footer-content {
+                border-top:    2px white solid;
+            }
+        }
+
+
+        @media screen and (min-width: 750px) and (max-width: 1000px){
+
+            #container {
+                grid-template-areas: "title foot"
+                                     "main  head"
+                                     "main  head"
+                                     "main  head"
+                                     "main  aside"
+                                     "main  aside"
+                                     "main  aside";
+                grid-template-rows: 40px 40px 40px 22px 22px 40px 40px;
+                grid-template-columns: 50%;
+            }
+            #title-content {
+                border-bottom: 1.5px white solid;
+                border-right: 1.5px white solid;
+                grid-area: title;
+            }
+            #header-content {
+                border-top:  1.5px white solid;
+                border-bottom: 1.5px white solid;
+                border-left: 1.5px white solid;
+                grid-area: head;
+            }
+            #main-content {
+                border-top:   1.5px white solid;
+                border-right: 1.5px white solid;
+                grid-area: main;
+            }
+            #aside-content {
+                border-top:  1.5px white solid;
+                border-left: 1.5px white solid;
+                grid-area: aside;
+            }
+            #footer-content {
+                border-bottom: 1.5px white solid;
+                border-left: 1.5px white solid;
+                grid-area: foot;
+            }
+        }
+
+        @media screen and (min-width: 1000px) {
+
+            #container {
+                grid-template-areas: "title title"
+                                     "head head"
+                                     "head head"
+                                     "head head"
+                                     "aside  main"
+                                     "aside  main"
+                                     "aside  main"
+                                     "aside  main"
+                                     "aside  main"
+                                     "foot foot"
+                                     "foot foot"
+                                     "foot foot";
+                grid-template-rows: 40px 40px 40px 23px 40px 40px 40px 40px
+                    45px 40px 40px 20px;
+                grid-template-columns: 50%;
+            }
+            #title-content {
+                border-bottom: 1.5px white solid;
+                grid-area: title;
+            }
+            #header-content {
+                border-top:  1.5px white solid;
+                border-bottom: 1.5px white solid;
+                grid-area: head;
+            }
+            #main-content {
+                border-top:  1.5px white solid;
+                border-left: 1.5px white solid;
+                border-bottom: 1.5px white solid;
+                grid-area: main;
+            }
+            #aside-content {
+                border-top:  1.5px white solid;
+                border-right: 1.5px white solid;
+                border-bottom: 1.5px white solid;
+                grid-area: aside;
+            }
+            #footer-content {
+                border-top:  1.5px white solid;
+                grid-area: foot;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>RMB: p1 with MQs for three sizes (-750 750+ 1000+)</h1>
+
+    <div id="container">
+
+        <section id="title-content" class="styled-element">
+            Title
+        </section>
+
+        <header id="header-content" class="styled-element">
+            Header
+        </header>
+
+        <main id="main-content" class="styled-element">
+            Main content
+        </main>
+
+        <aside id="aside-content" class="styled-element">
+            Aside
+        </aside>
+
+        <footer id="footer-content" class="styled-element">
+            Footer
+        </footer>
+
+    </div>
+
+</body>
+</html>

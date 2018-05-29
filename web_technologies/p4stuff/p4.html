@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="p4.css">
+    <script src="p4.js"></script>
+</head>
+<body>
+    <div id = "container">
+        <div id = "center_this">
+            <h1>
+                <img src="lil_ghost.png" height=30px>
+                3D Videos
+                <img src="lil_ghost.png" height=30px class = "flip">
+            </h1>
+            This site is for project 4. You can look at categories of images, sounds, and videos. You can play the videos and sounds. You can also upload new media.
+        </div>
+        <div class = "boxes">
+            <details>
+                <summary>
+                    <img src="lil_bat.png" height=20px>
+                    Unity3D Demos
+                    <img src="lil_bat.png" height=20px>
+                </summary>
+                <p>
+                    Author: Ryan Florida
+                </p>
+                <details>
+                    <summary>
+                        <img src="lil_skull.png" height=20px>
+                        Cubes in Unity3D
+                        <img src="lil_skull.png" height=20px>
+                    </summary>
+                    <p>
+                        This section is a collection of demos related to handling Cubes in Unity3D, especially moving and stretching cubes.
+                    </p>
+                    <button class="shape" id="red_cube" onclick="ShowVideo(this.id)">
+                        Unity3D Moving Red Cube.
+                    </button><br/>
+                    <img src="u3dRedCube.png" height=100px>
+                    <br/>
+                    <section class="hide" id="red_cube_vid">
+                        <button>
+                            <a href="u3dRedCube.mp4" download>Download Video</a>
+                        </button>
+                        <br/>
+                        <video width="400" height="350" controls download>
+                            <source src="u3dRedCube.mp4">
+                        </video>
+                    </section>
+                    <button class="shape" id="green_cube" onclick="ShowVideo(this.id)">
+                        Unity3D Stretching Green Cube.
+                    </button><br/>
+                    <img src="u3dGreenCube.png" height=100px>
+                    <br/>
+                    <section class="hide" id="green_cube_vid">
+                        <button>
+                            <a href="u3dGreenCube.mp4" download>Download Video</a>
+                        </button>
+                        <br/>
+                        <video width="400" height="350" controls download>
+                            <source src="u3dGreenCube.mp4">
+                        </video>
+                    </section>
+                </details>
+                <details>
+                    <summary>
+                        <img src="lil_skull.png" height=20px>
+                        Spheres in Unity3D
+                        <img src="lil_skull.png" height=20px>
+                    </summary>
+                    <p>
+                        This section is a collection of demos related to handling Spheres in Unity3D, especially moving and stretching spheres.
+                    </p>
+                    <button class="shape" id="red_sphere" onclick="ShowVideo(this.id)">
+                        Unity3D Moving Red Sphere.
+                    </button>
+                    <br/>
+                    <img src="u3dRedSphere.png" height=100px>
+                    <br/>
+                    <section class="hide" id="red_sphere_vid">
+                        <button>
+                            <a href="u3dRedSphere.mp4" download>Download Video</a>
+                        </button>
+                        <br/>
+                        <video width="400" height="350" controls download>
+                            <source src="u3dRedSphere.mp4">
+                        </video>
+                    </section>
+                    <button class="shape" id="green_sphere" onclick="ShowVideo(this.id)">
+                        Unity3D Stretching Green Sphere.
+                    </button>
+                    <br/>
+                    <img src="u3dGreenSphere.png" height=100px>
+                    <br/>
+                    <section class="hide" id="green_sphere_vid">
+                        <button>
+                            <a href="u3dGreenSphere.mp4" download>Download Video</a>
+                        </button>
+                        <br/>
+                        <video width="400" height="350" controls download>
+                            <source src="u3dGreenSphere.mp4">
+                        </video>
+                    </section>
+                </details>
+            </details>
+        </div>
+        <div class = "boxes">
+            <details>
+                <summary>
+                    <img src="lil_bat.png" height=20px>
+                    Maya Demos
+                    <img src="lil_bat.png" height=20px>
+                </summary>
+                <p>
+                    Author: Ryan Florida
+                </p>
+                <details>
+                    <summary>
+                        <img src="lil_skull.png" height=20px>
+                        Cubes in Maya
+                        <img src="lil_skull.png" height=20px>
+                    </summary>
+                    <p>
+                        This section is a collection of demos related to handling Cubes in Maya, especially moving cubes.
+                    </p>
+                    <button class='shape' id='maya_cube' onclick="ShowVideo(this.id)">
+                        Maya Moving Cube.
+                    </button><br/>
+                    <img src="mayaCube.png" height=100px>
+                    <br/>
+                    <section class="hide" id="maya_cube_vid">
+                        <button>
+                            <a href="mayaCube.mp4" download>Download Video</a>
+                        </button>
+                        <br/>
+                        <video width="400" height="350" controls download>
+                            <source src="mayaCube.mp4">
+                        </video>
+                    </section>
+                </details>
+                <details>
+                    <summary>
+                        <img src="lil_skull.png" height=20px>
+                        Spheres in Maya
+                        <img src="lil_skull.png" height=20px>
+                    </summary>
+                    <p>
+                        This section is a collection of demos related to handling Spheres in Maya, especially stretching spheres.
+                    </p>
+                    <button class='shape' id='maya_sphere' onclick="ShowVideo(this.id)">
+                        Maya Stretching Sphere.
+                    </button><br/>
+                    <img src="mayaSphere.png" height=100px>
+                    <br/>
+                    <section class="hide" id="maya_sphere_vid">
+                        <button>
+                            <a href="mayaSphere.mp4" download>Download Video</a>
+                        </button>
+                        <br/>
+                        <video width="400" height="350" controls download>
+                            <source src="mayaSphere.mp4">
+                        </video>
+                    </section>
+                </details>
+            </details>
+        </div>
+    <h2>
+        <img src="lil_pumpkins.png" height=35px>
+        Upload Section
+        <img src="lil_pumpkins.png" height=35px class = "flip">
+    </h2>
+    <p>
+        Choose a file to upload, either via drag-and-drop, or via file selection.
+    </p>
+<!-- The segment of code below is also cited from the site I cited in the
+.js file -->
+    <div id="drop_zone">
+        <form>
+            <p>Drag and drop file here.</p>
+            <p>It will be uploaded when dropped.</p>
+            <input type="file" id="file_to_upload" multip accept="image/*" onchange="handleFiles(this.files)">
+        </form>
+    </div>
+    Click here to upload a file.<br/>
+    <form>
+        <input type="file"  multip accept="image/*" onchange="handleFiles(this.files)">
+    </form>
+    </div>
+    <div id="graveyard">
+    </div>
+</body>
+</html>

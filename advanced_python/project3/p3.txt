@@ -1,0 +1,40 @@
+
+
+                            Python Programming
+                               Summer 2017
+                                Project 3
+
+
+turnin code:  py_p3
+
+
+Write a python3 module named
+    p3mod.py
+which can be imported and used as in the sample p3rmb.py program.
+
+The module should provide the function named
+    find_start_positions
+which receives a character string to analyze.  That function *must* be
+implemented as a generator which will, on each invocation, return a
+tuple of locations in that string which contain a potential start codon.
+Potential start codons are 'atg' and 'gtg'.  Input may be in either
+upper or lower case.
+
+To test, I will run p3rmb.py multiple times with various inputs.
+Each test will import your p3mod.py module.
+Each test will be run in this manner:
+
+    python3 p3rmb.py some_input_filename
+
+If the input file contains these lines:
+
+    s1   catgccccgtgaaaa
+    stwo ccgtgccccctgaaa
+
+then, the program would print:
+
+    s1 (1, 8)
+    stwo (2,)
+    s3 ()
+
+Use turnin to submit only your python source file.

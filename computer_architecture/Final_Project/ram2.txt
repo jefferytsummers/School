@@ -1,0 +1,73 @@
+JMP start
+  
+  ; Variables
+  r1: A9
+  r2: 2B
+  r3: AF
+  r4: 1
+  r5: D1
+
+  result1: 0
+  result2: 0
+  result3: 0
+  result4: 0
+  result5: 0
+  result6: 0
+  result7: 0
+
+  start:         ; start.
+    LDAC r1      ; Load ACC from memory var1
+    MVAC         ; Move ACC to R 					
+    LDAC r2      ; Load ACC from memory var2	
+    ADD          ; ACC = ACC + R 
+    STAC result1
+    OUT          ; Move ACC to OUTR
+    MOVR	  ; Move R to ACC.
+    CLAC	  ; Clear ACC
+
+    LDAC r2      ; Load ACC from memory var1
+    MVAC         ; Move ACC to R 					
+    LDAC r1      ; Load ACC from memory var2	
+    SUB
+    STAC result2
+    OUT          ; Move ACC to OUTR
+    CLAC	  ; Clear ACC
+
+    LDAC r1      ; Load ACC from memory var1
+    MVAC         ; Move ACC to R 					
+    LDAC r2      ; Load ACC from memory var2	
+    AND
+    STAC result3
+    OUT          ; Move ACC to OUTR
+    CLAC	  ; Clear ACC
+
+    LDAC r1      ; Load ACC from memory var1
+    MVAC         ; Move ACC to R 					
+    LDAC r2      ; Load ACC from memory var2	
+    OR
+    STAC result4
+    OUT          ; Move ACC to OUTR
+    CLAC	  ; Clear ACC
+
+    LDAC r1      ; Load ACC from memory var1
+    ASHR
+    STAC result5
+    OUT          ; Move ACC to OUTR
+    CLAC	  ; Clear ACC
+
+    LDAC r3      ; Load ACC from memory var1
+    MVAC         ; Move ACC to R 					
+    LDAC r4      ; Load ACC from memory var2	
+    ADD          ; ACC = ACC + R 
+    STAC result6
+    OUT          ; Move ACC to OUTR
+    CLAC	  ; Clear ACC
+
+    LDAC r5      ; Load ACC from memory var1
+    NOT
+    STAC result7
+    OUT          ; Move ACC to OUTR
+    CLAC	  ; Clear ACC
+
+    HALT         ; Stop execution
+

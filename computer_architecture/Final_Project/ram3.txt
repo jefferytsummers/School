@@ -1,0 +1,86 @@
+;;Author:      Ryan Florida
+;;Due Date:    4/27/17
+;;Description: This program generates the first 46 Lucas numbers, that
+;;             is numbers of the form x_i = x_(i-1) + x_(i-2) where i > 1 and
+;;             x_0 = 2 and x_1 = 1. I chose 46 terms because the hex
+;;             digit displays in our circuits can only hand number up to
+;;             ffffffff and the 46th Lucas number is f4be6463.
+
+;;Jump to start label.
+JMP start
+
+;; Variable declaration.
+L1:    2  ;Stores x_0
+L2:    1  ;Stores x_1
+L3:    0  ;Extra storage.
+count: 2c ;Counts how many terms we have, program terminates when count == 0.
+one:   0  ;For decrementing the count.
+
+  start:
+LDAC L1     ;Put 2 in ACC
+OUT         ;Output 2
+MVAC        ;Move 2 to R
+LDAC L2     ;Put 1 in ACC
+OUT         ;Output 1
+STAC L1     ;Put 1 in L1 variable
+ADD         ;Add 1 and 2
+OUT         ;Output result
+
+;;The following code generates the rest of the Lucas numbers in a loop.
+   loop:    ;Begin loop
+MVAC        ;Move value in ACC to R
+LDAC L1     ;Load value in L1 to ACC
+ADD         ;Add
+OUT         ;Output result
+STAC L1     ;Copy result to L1
+
+;;Decrement count such that it has odd parity.
+JMP decrementCountToOdd
+
+;;Now we continue with the generation of the next Lucas number.
+  continue1:
+ADD
+OUT
+STAC L2
+
+;;Decrement count such that it has even parity.
+JMP decrementCountToEven
+
+;;Now we continue with the generation of the next Lucas number.
+  continue2:
+
+;;Keep iterating through the loop.
+JMP  loop
+
+;;The following code segment decrements the count.
+  decrementCountToOdd:
+MOVR
+STAC L3
+LDAC count
+MVAC
+LDAC one
+NOT
+ADD
+STAC count
+LDAC L3
+MVAC
+LDAC L1
+JMP continue1
+
+;;The following code segment decrements the count and end the program
+;;terminates when count == 0.
+  decrementCountToEven:
+MOVR
+STAC L3
+LDAC count
+MVAC
+LDAC one
+NOT
+ADD
+JMPZ end
+STAC count
+LDAC L2
+JMP continue2
+
+   end:
+HALT
